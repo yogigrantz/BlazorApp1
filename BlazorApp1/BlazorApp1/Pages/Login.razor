@@ -1,0 +1,41 @@
+﻿@page "/"
+@using BlazorApp1.Auth
+@inject Authentication authentication
+@inject IHttpContextAccessor httpContextAccessor
+@inject NavigationManager NavManager
+
+
+@if (string.IsNullOrEmpty(ISAuthenticated))
+{
+
+    <h3>Login</h3>
+
+    <div>
+        <span>Username</span><br />
+        <input type="text" @bind="UserName" />
+    </div>
+
+    <div>
+        <span>Password</span><br />
+        <input type="text" @bind="Password" />
+    </div>
+
+    <div>
+        <div>@Message</div>
+    </div>
+
+
+    <div>
+        <Button @onclick="LoginProcess">Login</Button>
+    </div>
+
+    <br />
+    <div>
+        Pssttt... try demo / demo
+    </div>
+
+}
+else 
+{
+    @ISAuthenticated
+}
